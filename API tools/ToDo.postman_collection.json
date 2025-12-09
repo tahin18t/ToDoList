@@ -1,0 +1,393 @@
+{
+	"info": {
+		"_postman_id": "16fc1636-4026-423a-a2f7-e54289c18647",
+		"name": "ToDo",
+		"description": "This Api Collection is for **ToDoList** Application",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36579071",
+		"_collection_link": "https://universal-space-601636.postman.co/workspace/eda12be3-1c3c-40ec-8d45-c69e84b2e70d/collection/36579071-16fc1636-4026-423a-a2f7-e54289c18647?action=share&source=collection_link&creator=36579071"
+	},
+	"item": [
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Login/Registration",
+					"item": [
+						{
+							"name": "Registration",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FirstName\": \"abc\",\r\n    \"LastName\": \"abc\",\r\n    \"UserName\": \"abc\",\r\n    \"Email\": \"abc@gmail.com\",\r\n    \"Phone\": \"123\",\r\n    \"Password\": \"abc123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/createProfile",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"createProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"UserName\": \"admin\",\r\n    \"Password\": \"B5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/UserLogin",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"UserLogin"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Profile",
+					"item": [
+						{
+							"name": "Read Profile",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token-key",
+										"value": "{{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/SelectProfile",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"SelectProfile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateProfile",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "token-key",
+										"value": "{{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FirstName\": \"B1\",\r\n    \"LastName\": \"B2\",\r\n    \"Email\": \"B3\",\r\n    \"Phone\": \"B4\",\r\n    \"Password\": \"B5\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/UpdateProfile",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"UpdateProfile"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ToDo",
+			"item": [
+				{
+					"name": "Filter ToDo",
+					"item": [
+						{
+							"name": "SelectToDoByStatus",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token-key",
+										"value": "{{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"ToDoStatus\": \"New\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/SelectToDoByStatus",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"SelectToDoByStatus"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "SelectToDoByDate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token-key",
+										"value": "{{Token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"FromDate\": \"2025-06-01\",\r\n    \"ToDate\": \"2025-06-05\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{BaseURL}}/SelectToDoByDate",
+									"host": [
+										"{{BaseURL}}"
+									],
+									"path": [
+										"SelectToDoByDate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Create ToDo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token-key",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ToDoSubject\": \"todo subject\",\r\n    \"ToDoDescription\": \"This    is  to  To    Do    description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/CreateToDo",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"CreateToDo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ToDoList",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token-key",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{BaseURL}}/ToDoList",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"ToDoList"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "UpdateToDo",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "token-key",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6841f036c16f46f5549b2116\",\r\n    \"ToDoSubject\": \"todo subject\",\r\n    \"ToDoDescription\": \"This    is  to  To    Do    description\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/UpdateToDo",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"UpdateToDo"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RemoveToDo",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "token-key",
+								"value": "{{Token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"_id\": \"6841f036c16f46f5549b2116\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BaseURL}}/RemoveToDo",
+							"host": [
+								"{{BaseURL}}"
+							],
+							"path": [
+								"RemoveToDo"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BaseURL",
+			"value": "http://localhost:5000/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "Token",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NDkyNDE4OTMsImRhdGEiOnsiX2lkIjoiNjgzY2I2M2UwYjZmOGIxYmJhM2RhMThhIiwiRmlyc3ROYW1lIjoiQjEiLCJMYXN0TmFtZSI6IkIyIiwiVXNlck5hbWUiOiJhZG1pbiIsIkVtYWlsIjoiQjMiLCJQaG9uZSI6IkI0In0sImlhdCI6MTc0OTE1NTQ5M30.rGRlMcAtp8uQAdZJ7vEoF1HJAJHtdYYx28d5c-y4axQ",
+			"type": "string"
+		}
+	]
+}

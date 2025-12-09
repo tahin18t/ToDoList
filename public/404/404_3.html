@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>404 | Not Found</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            background: radial-gradient(circle at center, #3a0ca3 0%, #240046 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Press Start 2P', cursive;
+            color: #fff;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            padding: 30px;
+            border: 3px solid #240046;
+            border-radius: 12px;
+            background: rgba(36, 0, 70, 0.1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 25px #b5179e, 0 0 50px #b5179e66, 0 0 80px #7209b7;
+        }
+
+        .error-code {
+            font-size: 12vw;
+            color: #b5179e;
+            text-shadow:
+                    0 0 5px #b5179e,
+                    0 0 10px #b5179e,
+                    0 0 20px #b5179e,
+                    0 0 40px #7209b7;
+            animation: glitch 1s infinite;
+        }
+
+        .message {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            color: #f3c4fb;
+        }
+
+        .btn {
+            font-size: 1rem;
+            text-decoration: none;
+            background: #7209b7;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: 2px solid #f72585;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #f72585;
+            border-color: #7209b7;
+            transform: scale(1.05);
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px #ff00c8; }
+            20% { text-shadow: -2px -2px #7209b7; }
+            40% { text-shadow: 2px -2px #b5179e; }
+            60% { text-shadow: -2px 2px #ff0fa0; }
+            80% { text-shadow: 2px 2px #f72585; }
+            100% { text-shadow: 0 0 10px #b5179e; }
+        }
+
+        @media (max-width: 600px) {
+            .error-code {
+                font-size: 18vw;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="error-code">404</div>
+    <div class="message">LEVEL NOT FOUND!<br>Looks like you've wandered off the map...</div>
+    <a href="/" class="btn">Respawn Home</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>404 - Page Not Found</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Raleway&display=swap');
+
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #0a0a1a, #000014 70%);
+      font-family: 'Raleway', sans-serif;
+      color: #fff;
+    }
+
+    .container {
+      position: relative;
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+    }
+
+    /* Glowing 404 */
+    .error-code {
+      font-family: 'Orbitron', monospace;
+      font-size: 14vw;
+      font-weight: 900;
+      color: #000000; /* deeper teal/dark cyan */
+      text-shadow:
+              0 0 10px #0ff,
+              0 0 20px #0ff,
+              0 0 40px #0ff,
+              0 0 80px #0ff,
+              0 0 9px #0ff,
+              0 0 10px #0ff,
+              0 0 50px #0ff;
+      animation: neonPulse 2.5s infinite alternate;
+      user-select: none;
+    }
+
+
+    @keyframes neonPulse {
+      0% {
+        text-shadow:
+                0 0 5px #0ff,
+                0 0 10px #0ff,
+                0 0 20px #0ff,
+                0 0 40px #0ff,
+                0 0 80px #0ff,
+                0 0 90px #0ff,
+                0 0 100px #0ff;
+        color: #06faff;
+      }
+      100% {
+        text-shadow:
+                0 0 20px #0ff,
+                0 0 40px #0ff,
+                0 0 80px #0ff,
+                0 0 120px #0ff,
+                0 0 140px #0ff,
+                0 0 160px #0ff,
+                0 0 180px #0ff;
+        color: #00fff7;
+      }
+    }
+
+    /* Subtitle */
+    .subtitle {
+      font-size: 1.5rem;
+      font-weight: 500;
+      color: #00fff7aa;
+      margin-top: 10px;
+      letter-spacing: 1.5px;
+      opacity: 0;
+      animation: fadeInUp 1.2s ease forwards;
+      animation-delay: 1s;
+    }
+
+    /* Description */
+    .description {
+      max-width: 450px;
+      font-size: 1rem;
+      font-weight: 300;
+      color: #0ff;
+      margin: 20px auto 40px;
+      opacity: 0;
+      animation: fadeInUp 1.4s ease forwards;
+      animation-delay: 1.3s;
+      line-height: 1.5;
+    }
+
+    /* Button */
+    .home-btn {
+      padding: 14px 36px;
+      font-size: 1rem;
+      font-weight: 600;
+      font-family: 'Orbitron', monospace;
+      letter-spacing: 2px;
+      color: #0ff;
+      background: transparent;
+      border: 2px solid #0ff;
+      border-radius: 40px;
+      cursor: pointer;
+      text-transform: uppercase;
+      transition: all 0.4s ease;
+      opacity: 0;
+      animation: fadeInUp 1.6s ease forwards;
+      animation-delay: 1.6s;
+    }
+    .home-btn:hover {
+      background: #0ff;
+      color: #001f24;
+      box-shadow:
+              0 0 10px #0ff,
+              0 0 20px #0ff,
+              0 0 40px #0ff,
+              0 0 80px #0ff;
+    }
+
+    /* Neon fade-in up */
+    @keyframes fadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Cityscape silhouette SVG */
+    .cityscape {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1000px;
+      height: 180px;
+      fill: #0ff2a;
+      filter: drop-shadow(0 0 8px #0ff);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Floating particles */
+    .particles {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      overflow: visible;
+      z-index: 0;
+    }
+
+    .particle {
+      position: absolute;
+      background: #0ff;
+      border-radius: 50%;
+      opacity: 0.2;
+      animation: float 7s ease-in-out infinite;
+      will-change: transform, opacity;
+    }
+
+    /* Different sizes & positions */
+    .particle.small {
+      width: 4px;
+      height: 4px;
+      animation-duration: 5s;
+      animation-delay: 0s;
+    }
+    .particle.medium {
+      width: 7px;
+      height: 7px;
+      animation-duration: 8s;
+      animation-delay: 3s;
+    }
+    .particle.large {
+      width: 12px;
+      height: 12px;
+      animation-duration: 10s;
+      animation-delay: 1.5s;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0) translateX(0);
+        opacity: 0.2;
+      }
+      50% {
+        transform: translateY(-20px) translateX(10px);
+        opacity: 0.6;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .error-code {
+        font-size: 24vw;
+      }
+      .description {
+        max-width: 90%;
+      }
+      .cityscape {
+        height: 120px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container" role="main" aria-label="404 Not Found page">
+
+  <h1 class="error-code" aria-hidden="true">404</h1>
+
+  <p class="subtitle">Oops! Page Not Found</p>
+
+  <p class="description">
+    The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.
+  </p>
+
+  <button class="home-btn" onclick="location.href='/'" aria-label="Go back to homepage">Back to Home</button>
+
+  <!-- Cityscape SVG -->
+  <svg class="cityscape" viewBox="0 0 1000 180" preserveAspectRatio="xMidYMid meet" aria-hidden="true" focusable="false">
+    <path d="M0 180 L0 120 L20 120 L20 80 L50 80 L50 30 L70 30 L70 80 L120 80 L120 10 L140 10 L140 80 L160 80 L160 140 L180 140 L180 90 L210 90 L210 0 L230 0 L230 90 L270 90 L270 30 L290 30 L290 80 L310 80 L310 160 L340 160 L340 120 L360 120 L360 80 L390 80 L390 40 L410 40 L410 80 L440 80 L440 0 L460 0 L460 70 L480 70 L480 130 L500 130 L500 60 L520 60 L520 110 L540 110 L540 40 L560 40 L560 100 L580 100 L580 140 L600 140 L600 70 L630 70 L630 20 L650 20 L650 80 L670 80 L670 130 L700 130 L700 90 L720 90 L720 20 L740 20 L740 70 L760 70 L760 140 L780 140 L780 110 L800 110 L800 160 L830 160 L830 90 L850 90 L850 140 L870 140 L870 60 L890 60 L890 110 L920 110 L920 0 L940 0 L940 120 L960 120 L960 90 L980 90 L980 30 L1000 30 L1000 180 Z" />
+  </svg>
+
+  <!-- Particles -->
+  <div class="particles" aria-hidden="true">
+    <div class="particle small" style="top: 20%; left: 15%; animation-delay: 0s;"></div>
+    <div class="particle medium" style="top: 50%; left: 30%; animation-delay: 2s;"></div>
+    <div class="particle large" style="top: 40%; left: 45%; animation-delay: 4s;"></div>
+    <div class="particle small" style="top: 65%; left: 60%; animation-delay: 1s;"></div>
+    <div class="particle medium" style="top: 30%; left: 75%; animation-delay: 3s;"></div>
+    <div class="particle large" style="top: 55%; left: 85%; animation-delay: 5s;"></div>
+  </div>
+
+</div>
+
+</body>
+</html>
