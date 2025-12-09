@@ -1,0 +1,34 @@
+/* Small utility styles for nicer UI (no build step needed) */
+:root { --transition: 160ms cubic-bezier(.4,0,.2,1); }
+* { font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica Neue, Arial, "Noto Sans", "Liberation Sans", Apple Color Emoji, Segoe UI Emoji; }
+
+.tab-btn { text-align:center; padding:0.75rem 0; font-size:.875rem; font-weight:600; border-bottom:2px solid transparent; transition: background-color var(--transition), border-color var(--transition), color var(--transition); }
+.tab-btn:hover { background:#f8fafc; }
+.tab-btn.active { border-color:#4f46e5; color:#4338ca; background:rgba(238,242,255,.5); }
+
+.card { background:#fff; border-radius:1rem; box-shadow:0 1px 2px rgba(0,0,0,.04); border:1px solid #e2e8f0; padding:1.5rem; }
+.card-title { font-size:1.125rem; font-weight:600; margin-bottom:1rem; }
+
+.form-label { font-size:.875rem; color:#475569; }
+.input { padding:0.5rem 0.75rem; border-radius:0.5rem; border:1px solid #cbd5e1; background:#fff; transition:border-color var(--transition), box-shadow var(--transition); }
+.input:focus { outline:none; border-color:#6366f1; box-shadow:0 0 0 3px rgba(99,102,241,.2); }
+
+.btn-primary { display:inline-flex; align-items:center; justify-content:center; padding:0.5rem 1rem; border-radius:0.5rem; color:#fff; background:#4f46e5; transition:background-color var(--transition), transform var(--transition); box-shadow:0 1px 2px rgba(0,0,0,.06); }
+.btn-primary:hover { background:#4338ca; }
+.btn-primary:active { background:#3730a3; }
+
+.btn-secondary { display:inline-flex; align-items:center; justify-content:center; padding:0.5rem 0.75rem; border-radius:0.5rem; color:#0f172a; background:#fff; border:1px solid #cbd5e1; transition:background-color var(--transition); }
+.btn-secondary:hover { background:#f8fafc; }
+
+.btn-ghost { display:inline-flex; align-items:center; justify-content:center; padding:0.5rem 0.75rem; border-radius:0.5rem; color:#475569; background:transparent; transition:background-color var(--transition); }
+.btn-ghost:hover { background:#f1f5f9; }
+
+.badge { display:inline-flex; align-items:center; gap:.25rem; font-size:.75rem; padding:0.125rem 0.5rem; border-radius:999px; }
+.badge-new { background:#dbeafe; color:#1e40af; }
+.badge-progress { background:#fde68a; color:#92400e; }
+.badge-completed { background:#d1fae5; color:#065f46; }
+.badge-cancelled { background:#fecaca; color:#7f1d1d; }
+
+.toast { padding:0.5rem 1rem; border-radius:0.5rem; box-shadow:0 4px 12px rgba(0,0,0,.12); border:1px solid; font-size:.875rem; }
+.toast-success { background:#ecfdf5; border-color:#a7f3d0; color:#065f46; }
+.toast-error { background:#fff1f2; border-color:#fecdd3; color:#7f1d1d; }

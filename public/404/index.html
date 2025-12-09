@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ToDoList – Fast, Clean, Gorgeous</title>
+  <link rel="icon" href="data:," />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body class="bg-slate-50 text-slate-800">
+  <header class="sticky top-0 z-10 backdrop-blur bg-white/70 border-b border-slate-200">
+    <div class="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-9 h-9 rounded-xl bg-indigo-600 text-white grid place-content-center font-bold">T</div>
+        <h1 class="text-lg font-semibold tracking-tight">ToDoList</h1>
+        <span class="ml-2 text-xs px-2 py-0.5 rounded-full bg-slate-100 text-slate-500">Express API</span>
+      </div>
+      <div id="userMenu" class="hidden items-center gap-3">
+        <span id="userNameBadge" class="text-sm text-slate-600"></span>
+        <button id="logoutBtn" class="px-3 py-1.5 text-sm rounded-lg border border-slate-300 hover:bg-slate-100">Logout</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-8">
+    <!-- Auth View -->
+    <section id="authView" class="max-w-xl mx-auto">
+      <div class="bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+        <div class="grid grid-cols-2">
+          <button id="tabLogin" class="tab-btn active">Login</button>
+          <button id="tabRegister" class="tab-btn">Register</button>
+        </div>
+        <div class="p-6">
+          <!-- Login Form -->
+          <form id="loginForm" class="space-y-4">
+            <div class="grid gap-2">
+              <label class="form-label">Username</label>
+              <input type="text" name="UserName" class="input" placeholder="your_username" required />
+            </div>
+            <div class="grid gap-2">
+              <label class="form-label">Password</label>
+              <input type="password" name="Password" class="input" placeholder="••••••••" required />
+            </div>
+            <button class="btn-primary w-full" type="submit">Login</button>
+          </form>
+          <!-- Register Form -->
+          <form id="registerForm" class="space-y-4 hidden">
+            <div class="grid gap-2">
+              <label class="form-label">First Name</label>
+              <input type="text" name="FirstName" class="input" required />
+            </div>
+            <div class="grid gap-2">
+              <label class="form-label">Last Name</label>
+              <input type="text" name="LastName" class="input" required />
+            </div>
+            <div class="grid gap-2">
+              <label class="form-label">Username</label>
+              <input type="text" name="UserName" class="input" required />
+            </div>
+            <div class="grid gap-2">
+              <label class="form-label">Email</label>
+              <input type="email" name="Email" class="input" required />
+            </div>
+            <div class="grid gap-2">
+              <label class="form-label">Phone</label>
+              <input type="tel" name="Phone" class="input" required />
+            </div>
+            <div class="grid gap-2">
+              <label class="form-label">Password</label>
+              <input type="password" name="Password" class="input" required />
+            </div>
+            <button class="btn-primary w-full" type="submit">Create account</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- App View -->
+    <section id="appView" class="hidden">
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- Left column: Create + Filters + Profile -->
+        <div class="space-y-6">
+          <!-- Create ToDo -->
+          <div class="card">
+            <h2 class="card-title">Create ToDo</h2>
+            <form id="createTodoForm" class="space-y-4">
+              <div class="grid gap-2">
+                <label class="form-label">Subject</label>
+                <input type="text" name="ToDoSubject" class="input" placeholder="e.g., Buy groceries" required />
+              </div>
+              <div class="grid gap-2">
+                <label class="form-label">Description</label>
+                <textarea name="ToDoDescription" class="input min-h-[90px]" placeholder="Optional details..."></textarea>
+              </div>
+              <button class="btn-primary" type="submit">Add</button>
+            </form>
+          </div>
+
+          <!-- Filters -->
+          <div class="card">
+            <h2 class="card-title">Filters</h2>
+            <div class="grid gap-4">
+              <div class="grid gap-1">
+                <label class="form-label">Status</label>
+                <select id="filterStatus" class="input">
+                  <option value="">All</option>
+                  <option>New</option>
+                  <option>Progress</option>
+                  <option>Completed</option>
+                  <option>Cancelled</option>
+                </select>
+              </div>
+              <div class="grid gap-1">
+                <label class="form-label">Date range</label>
+                <div class="grid grid-cols-2 gap-2">
+                  <input type="date" id="filterFrom" class="input" />
+                  <input type="date" id="filterTo" class="input" />
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <button id="applyFilters" class="btn-secondary">Apply</button>
+                <button id="clearFilters" class="btn-ghost">Clear</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Profile -->
+          <div class="card">
+            <h2 class="card-title">Profile</h2>
+            <form id="profileForm" class="space-y-4">
+              <div class="grid gap-2">
+                <label class="form-label">First Name</label>
+                <input type="text" name="FirstName" class="input" />
+              </div>
+              <div class="grid gap-2">
+                <label class="form-label">Last Name</label>
+                <input type="text" name="LastName" class="input" />
+              </div>
+              <div class="grid gap-2">
+                <label class="form-label">Username</label>
+                <input type="text" name="UserName" class="input" disabled />
+              </div>
+              <div class="grid gap-2">
+                <label class="form-label">Email</label>
+                <input type="email" name="Email" class="input" />
+              </div>
+              <div class="grid gap-2">
+                <label class="form-label">Phone</label>
+                <input type="tel" name="Phone" class="input" />
+              </div>
+              <div class="grid gap-2">
+                <label class="form-label">Password</label>
+                <input type="password" name="Password" class="input" placeholder="Leave blank to keep" />
+              </div>
+              <button class="btn-primary" type="submit">Save profile</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Right column: List -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center justify-between">
+            <h2 class="text-xl font-semibold">Your ToDos</h2>
+            <div id="listSummary" class="text-sm text-slate-500"></div>
+          </div>
+          <div id="todoList" class="grid gap-3"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Toasts -->
+  <div id="toast" class="fixed bottom-4 right-4 hidden"></div>
+
+  <script src="/app.js" type="module"></script>
+</body>
+</html>
