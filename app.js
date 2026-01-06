@@ -43,8 +43,18 @@ const limiter = rateLimit({
 app.use(limiter)
 
 // Mongodb Database Connection
-let URL = process.env.MONGODB_URI;
-let OPTIONS = {user:'', pass:'', autoIndex:true};
+const URL = `mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@${process.env.CLUSTER_NAME}/${process.env.DB_NAME}?retryWrites=true&w=majority&appName=PersonalProject`;
+
+console.log(URL)
+let OPTIONS = {
+    autoIndex:true
+}
+
+mongoose.connect(URL, OPTIONS)
+    .then(() => console.log("Database Connected Successfully"))
+    .catch((error) => console.log("Database Connection Failed:", error));
+
+// let OPTIONS = {user:'', pass:'', autoIndex:true};
 /* mongoose.connect(URL, OPTIONS, (error) => {
     if (error) {
         console.log(error)
@@ -53,9 +63,9 @@ let OPTIONS = {user:'', pass:'', autoIndex:true};
         console.log("Database Connected Successfully")
     }
 })  */
-mongoose.connect(URL, OPTIONS)
-    .then(() => console.log("Database Connected Successfully"))
-    .catch((error) => console.log("Database Connection Failed:", error));
+// mongoose.connect(URL, OPTIONS)
+//     .then(() => console.log("Database Connected Successfully"))
+//     .catch((error) => console.log("Database Connection Failed:", error));
 
 // Routing Implement
 app.use('/api/v1', router)
